@@ -13,7 +13,10 @@ package org.monte.screenrecorder;
 import java.awt.*;
 import java.awt.event.*;
 
+import java.net.URL;
+
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JWindow;
 import org.monte.media.Format;
 import java.io.File;
@@ -36,6 +39,9 @@ public class CommandlineRecorderMain implements ActionListener {
     JButton component;
     boolean started = false;
     String quicktimePath;
+    
+    URL play_url = ClassLoader.getSystemResource("org/monte/screenrecorder/images/play_button.png");
+    URL rec_url = ClassLoader.getSystemResource("org/monte/screenrecorder/images/rec_button.png");
     
     public void actionPerformed(ActionEvent e) { 
         
@@ -90,6 +96,10 @@ public class CommandlineRecorderMain implements ActionListener {
             
             window.getContentPane().setBackground( Color.RED );  
             component.setLabel("Now Recording - Click here to finish!");
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Image img = kit.createImage(rec_url);
+            component.setIcon(new ImageIcon(img));
+            
             started = true;
             
         } else {
@@ -117,10 +127,16 @@ public class CommandlineRecorderMain implements ActionListener {
         window.setAlwaysOnTop(true);
         component = new JButton("Screen Recording - Click here to start!");
         component.addActionListener(this);
+        component.setSize(500, 55);
         window.getContentPane().setBackground( Color.GREEN );  
         window.getContentPane().add(component, BorderLayout.CENTER);
-        window.setSize(300, 50);
+        window.setSize(500, 55);
         window.setVisible(true);
+        
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Image img = kit.createImage(play_url);
+        component.setIcon(new ImageIcon(img));
+        
         
     }
 }
