@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="res">
+    <file>checkin.png</file>
+    <file>checkout.png</file>
+  </qresource>
+</RCC>
